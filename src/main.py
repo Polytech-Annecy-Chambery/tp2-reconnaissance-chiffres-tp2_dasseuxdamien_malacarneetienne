@@ -52,3 +52,4 @@ if __name__ == '__main__':
     liste_modeles = lecture_modeles(path_to_assets)
     chiffre = reconnaissance_chiffre(image, liste_modeles, 70)
     print("Le chiffre reconnu est : ", chiffre)
+    input()
