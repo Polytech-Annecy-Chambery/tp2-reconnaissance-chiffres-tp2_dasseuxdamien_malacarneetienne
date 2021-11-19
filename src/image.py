@@ -68,39 +68,18 @@ class Image:
     #==============================================================================
     def localisation(self):
         
-        x_min = min(np.where(self.pixels==255)[1])
-        x_max = max(np.where(self.pixels==255)[1])
-
-        y_min = min(np.where(self.pixels==255)[0])
-        y_max = max(np.where(self.pixels==255)[0])
-
-        """
-        for y in range(len(self.pixels)):
-            if 255 in self.pixels[y]:
-                y_min = y
-                break
+        x_min = min(np.where(self.pixels==0)[1])
+        x_max = max(np.where(self.pixels==0)[1])
+      
+        y_min = min(np.where(self.pixels==0)[0])
+        y_max = max(np.where(self.pixels==0)[0])
+      
+     
         
-        for y in range(len(self.pixels)-1, y_min, -1):
-            if 255 in self.pixels[y]:
-                y_max = y
-                break
-        
-        x_min = self.pixels[y_min].index(255)
-        x_max = len(self.pixels[y_min]) - 1 - self.pixels[y_min][::-1].index(255)
-
-        for y in range(y_min, y_max+1):
-            index_first_255 = self.pixels[y].index(255)
-            index_last_255 = len(self.pixels[y]) - 1 - self.pixels[y][::-1].index(255)
-
-            if index_first_255<x_min:
-                x_min=index_first_255
-
-            if index_last_255>x_max:
-                x_max=index_last_255
-        """
+     
         new_img = Image()
         new_img.set_pixels(np.zeros((y_max-y_min+1, x_max-x_min+1)))
-        new_img.pixels=np.array(self.pixels[y_min:(y_max+1)][x_min:(x_max+1)])
+        new_img.pixels=np.array(self.pixels[y_min:(y_max+1),x_min:(x_max+1)])
         return new_img
 
     #==============================================================================
